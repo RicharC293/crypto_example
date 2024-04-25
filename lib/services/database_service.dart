@@ -32,6 +32,13 @@ class DatabaseService {
       final user = User()
         ..email = email
         ..password = password;
+
+      final userExists = await _isar.writeTxn(() async {
+        return await _isar.users.filter().emailEqualTo(email).findFirst();
+      });
+
+      if (userExists != null) throw Exception('User already exists');
+
       await _isar.writeTxn(() async {
         await _isar.users.put(user);
       });
