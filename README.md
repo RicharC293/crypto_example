@@ -1,17 +1,32 @@
-# cripto
+# Project example to connect BINANCE api to a Flutter project
 
-Cripto example project
+A simple project to connect to the binance api and get the data of the coins.
 
-## Getting Started
+# Pre-requisites 🚩
+You need to have the following package in order to run the project
 
-This project is a starting point for a Flutter application.
+```
+flutter    v3.19.6 stable channel
+dart       v3.3.4
+```
 
-A few resources to get you started if this is your first Flutter project:
+# Steps to run the project
+1. Clone the project
+2. Run the command `flutter pub get`
+3. Run the command `flutter pub run build_runner build -d` to generate the user model User Managment
+4. Run the command `flutter run` to run the project
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+# Api Considerations
+The project use open test api from [Binance](https://binance-docs.github.io/apidocs/spot/en/#general-info) to get the data of the coins.
+So is not required any api key to run the project.
+Important: The api is a test api, so use it only for testing purposes.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# crypto_example
+# Design Considerations
+The project use a simple design with a list of coins and a detail page of the coin selected.
+I emulate the design of the binance app, with a DS colors but a material design for the components.
+
+# Important
+Project use database to store the user data, so is important to run the command `flutter pub run build_runner build -d` to generate the user model User Managment
+You can login with a registered user or create a new one.
+First time you need create a new user, after that you can login with the user created.
+
