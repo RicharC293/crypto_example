@@ -1,3 +1,4 @@
+import 'package:crypto_example/app/screens/login_screen/widgets/forgot_password.dart';
 import 'package:crypto_example/app/screens/sign_up_screen/sign_up_screen.dart';
 import 'package:crypto_example/app/utils/navigation.dart';
 import 'package:crypto_example/app/utils/validators.dart';
@@ -5,7 +6,6 @@ import 'package:crypto_example/app/widgets/buttons/button_link.dart';
 import 'package:crypto_example/app/widgets/inputs/input_password.dart';
 import 'package:crypto_example/app/widgets/messages/messages.dart';
 import 'package:crypto_example/domain/notifiers/auth_notifier.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
 import '../home_screen/home_screen.dart';
@@ -43,6 +43,15 @@ class _LoginScreenState extends State<LoginScreen> {
       if (!mounted) return;
       Messages(message: err.toString()).error(context);
     }
+  }
+
+  Future<void> _showPasswordAlert() async {
+    await showDialog(
+      context: context,
+      builder: (context) {
+        return const ForgotPassword();
+      },
+    );
   }
 
   @override
@@ -90,11 +99,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     }),
                 const SizedBox(height: spacing2),
                 ButtonLink(
-                    label: 'Forgot password?',
-                    onPressed: () {
-                      const Messages(message: 'Not supported yet!')
-                          .info(context);
-                    }),
+                  label: 'Forgot password?',
+                  onPressed: _showPasswordAlert,
+                ),
               ],
             ),
           ),

@@ -1,5 +1,7 @@
 import 'package:crypto_example/app/screens/welcome_screen/welcome_screen.dart';
 import 'package:crypto_example/domain/notifiers/auth_notifier.dart';
+import 'package:crypto_example/domain/notifiers/binance_notifier.dart';
+import 'package:crypto_example/services/binance_service.dart';
 import 'package:crypto_example/services/database_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +18,8 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(
               create: (context) => AuthNotifier(DatabaseService.instance)),
+          ChangeNotifierProvider(
+              create: (context) => BinanceNotifier(BinanceService()))
         ],
         builder: (context, _) {
           return GestureDetector(

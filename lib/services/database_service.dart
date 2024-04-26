@@ -66,4 +66,20 @@ class DatabaseService {
       rethrow;
     }
   }
+
+  Future<String> getPassword({
+    required String email,
+  }) async {
+    try {
+      /// use to simulate a delay
+      await Future.delayed(const Duration(seconds: 2));
+      final user = await _isar.writeTxn(() async {
+        return await _isar.users.filter().emailEqualTo(email).findFirst();
+      });
+      if (user == null) throw Exception('User not found');
+      return user.password ?? '';
+    } catch (err) {
+      rethrow;
+    }
+  }
 }

@@ -46,6 +46,19 @@ class AuthNotifier extends ChangeNotifier {
     }
   }
 
+  Future<String> forgotPassword({required String email}) async {
+    try {
+      _isLoading = true;
+      notifyListeners();
+      return await _databaseService.getPassword(email: email);
+    } catch (err) {
+      rethrow;
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
   void logout() {
     _isAuthenticated = false;
     notifyListeners();
